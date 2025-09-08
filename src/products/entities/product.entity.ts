@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Product {
@@ -7,7 +7,7 @@ export class Product {
   id: number
 
   @Column({type: 'varchar', length: 10, nullable: true})
-  externalId: string
+  sku: string
 
   @Column({type: 'varchar', length: 200})
   name: string
@@ -33,4 +33,6 @@ export class Product {
   @Column({type:'int', default: 0})
   stock: number
 
+  @CreateDateColumn()
+  createdAt: Date
 }

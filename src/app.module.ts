@@ -5,9 +5,14 @@ import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
+import { TaskModule } from './task/task.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
+   ScheduleModule.forRoot(),
+       TaskModule,
+
     ConfigModule.forRoot({
       isGlobal: true
     }),
