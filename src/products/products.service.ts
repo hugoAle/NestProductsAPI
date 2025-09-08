@@ -2,16 +2,18 @@ import { BadRequestException, Injectable, InternalServerErrorException, NotFound
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Product } from './entities/product.entity';
+import { DeletedProduct, Product } from './entities/product.entity';
 import { Between, FindManyOptions, Raw, Repository } from 'typeorm';
 import { GetProductFilter } from './filters/get-products-filter';
 
 @Injectable()
 export class ProductsService {
 
-   constructor(
+  constructor(
     @InjectRepository(Product)
     private readonly productsRepository: Repository<Product>,
+    @InjectRepository(DeletedProduct)
+    private readonly deletedRepository: Repository<DeletedProduct>,
   ) {}
   
   async create(createProductDto: CreateProductDto) {
@@ -163,6 +165,12 @@ export class ProductsService {
         message: 'Product not found'
       });
 
+    //save in 'deleted products' table for reporting purposes
+    await this.deletedRepository.save({
+      id: findItem.id
+    })
+
+    // deleted from actual table
     await this.productsRepository.delete({
       id: id
     });
