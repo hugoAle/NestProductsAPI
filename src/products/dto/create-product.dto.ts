@@ -1,14 +1,10 @@
 import { IsInt, IsNotEmpty, IsNumber, IsOptional, IsString, Min } from "class-validator"
-import { PrimaryGeneratedColumn } from "typeorm"
 
 export class CreateProductDto {
 
-  @PrimaryGeneratedColumn()
-  id: number
-
   @IsString()
   @IsOptional()
-  externalId?:string
+  sku?:string
 
   @IsString()
   @IsNotEmpty({message: 'Name cannot be empty'})

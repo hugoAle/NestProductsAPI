@@ -16,7 +16,6 @@ export class ProductsController {
 
   @Get()
   findAll(@Query() query: GetProductFilter) {
-     console.log('query --> ', query);
     return this.productsService.findAll(query);
   }
 
