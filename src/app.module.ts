@@ -8,6 +8,7 @@ import { typeOrmConfig } from './config/typeorm.config';
 import { TaskModule } from './task/task.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { ReportsModule } from './reports/reports.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ReportsModule } from './reports/reports.module';
     }),
     ProductsModule,
     ReportsModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+ 
 
 import { ConfigService } from '@nestjs/config';
 import { Injectable, Logger } from '@nestjs/common';
