@@ -1,0 +1,25 @@
+# prettier-ignore
+name: Open Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  CheckoutAndLint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 22.x
+
+      - name: install dependencies
+        run: npm ci
+
+      - name: run eslint
+        run: npm run lint
