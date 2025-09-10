@@ -5,6 +5,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { DateFilter } from '../common/query-filters/date-filter';
 import { endOfDay, isValid, parseISO, startOfDay } from 'date-fns';
 
+type CategoryCount = {
+  category: string,
+  count: number
+}
+
 @Injectable()
 export class ReportsService {
 
@@ -74,6 +79,39 @@ export class ReportsService {
     return{
       success: true,
       message: `% non-deleted products: ${percentageNonDeleted.toFixed(2)}`
+    }
+  }
+
+  private async countByCat(category: string) {
+    const itemCount = await this.productRepository.count({
+      where:{
+        category: category
+      }
+    });
+    return itemCount;
+  }
+
+  async geCategoriesDistribution() {
+
+    const qryCat = await this.productRepository.createQueryBuilder('public.product')
+                    .select('DISTINCT ("category")')
+                    .getRawMany();
+
+    const countByCategory: CategoryCount[] = [];
+
+    for(const item of qryCat) {
+
+      const itemCount = await this.countByCat(item.category);
+
+      countByCategory.push({
+        category: item.category,
+        count: itemCount
+      });
+    }
+
+    return{
+      success: true,
+      data: countByCategory
     }
   }
 
