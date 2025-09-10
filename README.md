@@ -40,6 +40,8 @@ A sample reports module with the following reports:
 
 - non-deletedProducts: get the percentage of active prodcuts (non-deleted) since the first data insertion. This reports accepts an optional query parameters to get the report only within a specific date range. Use the filter like this:
 
+- categoryDistribution: gets the distinct categories and the count of products for each one
+
 ```
 reports/non-deletedProducts?startDate={2025-09-04}&endDate={2025-09-05}
 ```
