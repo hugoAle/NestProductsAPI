@@ -1,7 +1,6 @@
 import { Transform } from 'class-transformer';
 import {  IsInt, IsOptional, IsString } from 'class-validator';
-import { PaginationFilter } from 'src/common/query-filters/pagination-filter';
-
+import { PaginationFilter } from '../../common/query-filters/pagination-filter';
 
 export class GetProductFilter extends PaginationFilter { 
 

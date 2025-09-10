@@ -3,7 +3,7 @@ import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { GetProductFilter } from './filters/get-products-filter';
-import { IdValidationPipe } from 'src/common/pipes/id-validation-pipe';
+import {IdValidationPipe} from '../common/pipes/id-validation-pipe';
 import { ApiResponse , ApiParam, ApiQuery } from '@nestjs/swagger';
 
 @Controller('products')
