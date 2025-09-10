@@ -1,8 +1,8 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { DeletedProduct, Product } from 'src/products/entities/product.entity';
+import { DeletedProduct, Product } from '../products/entities/product.entity';
 import { Between, FindManyOptions, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DateFilter } from 'src/common/query-filters/date-filter';
+import { DateFilter } from '../common/query-filters/date-filter';
 import { endOfDay, isValid, parseISO, startOfDay } from 'date-fns';
 
 @Injectable()

@@ -13,8 +13,7 @@ import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
    ScheduleModule.forRoot(),
-       TaskModule,
-
+    TaskModule,
     ConfigModule.forRoot({
       isGlobal: true
     }),
