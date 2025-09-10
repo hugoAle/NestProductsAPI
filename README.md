@@ -40,15 +40,15 @@ A sample reports module with the following reports:
 
 - non-deletedProducts: get the percentage of active prodcuts (non-deleted) since the first data insertion. This reports accepts an optional query parameters to get the report only within a specific date range. Use the filter like this:
 
-- categoryDistribution: gets the distinct categories and the count of products for each one
-
 ```
 reports/non-deletedProducts?startDate={2025-09-04}&endDate={2025-09-05}
 ```
 
 When using the 'date range' query param the active products are filtered by creation date and the deleted products by deletion date before calcuting the resulting percentage.
 
-- This module is private which means its protected with Bearer Token authorization.
+- categoryDistribution: gets the distinct categories and the count of products for each one
+
+**NOTE**: This module is private which means its protected with Bearer Token authorization.
 
 ### Authorization module
 
